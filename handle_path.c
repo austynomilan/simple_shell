@@ -11,12 +11,12 @@ char *handle_path(char *cmd)
 {
 	char *path = getenv("PATH");
 	char *dir = strtok(path, ":");
-	char *full_path = malloc(strlen_cmd(dir) + strlen_cmd(cmd) + 2);
+	char *full_path = malloc(sizeof(char) * PATH_MAX_LENGTH);
 	char *cmd_cpy;
 
 	if (access(cmd, X_OK) == 0)
 	{
-		cmd_cpy = strdup(cmd);
+		cmd_cpy = strdup_cmd(cmd);
 		return (cmd_cpy);
 	}
 

@@ -11,7 +11,7 @@ char **tokenize(char *read)
 {
 	char *token, *read_copy;
 	char **tokens = malloc(sizeof(char *) * MAX_LEN);
-	char delim[] = "\t\r\n\a";
+	char delim[] = "\t\r\n\a ";
 	int i = 0;
 
 	if (tokens == NULL)

@@ -22,20 +22,20 @@ int execute_cmd(char **args)
 			{
 				if (execve(full_path, args, environ) != -1)
 				{
-					perror("execve");
+					fprintf(stderr, "%s: command not found\n", args[0]);
 					exit(EXIT_FAILURE);
 				}
 			}
 			else
 			{
-				fprintf(stderr, "%s: %d: %s: not found\n", args[0], getpid(), args[0]);
+				fprintf(stderr, "%s: command not found\n", args[0]);
 				exit(EXIT_FAILURE);
 			}
 		}
 		else
 		{
 			if (execve(args[0], args, environ) == -1)
-				perror("execve");
+				fprintf(stderr, "%s: command not found\n", args[0]);
 		}
 	}
 	else if (pid < 0)

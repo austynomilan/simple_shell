@@ -28,8 +28,8 @@ typedef struct cmd
 
 extern char **environ;
 int (*get_cmd_func(char *s))(char **);
-char **inputDefiner(char *text_cpy, ssize_t read_len);
 int process_cmd(char **args);
+int process_mode(char **args);
 int execute_cmd(char **args);
 char *handle_path(char *cmd);
 int exit_cmd(char **args);
@@ -50,5 +50,6 @@ char *_getline_cmd();
 int atoi_cmd(char *str);
 bool check_delim(const char *delim, char c);
 char *strtok_cmd(char *str, const char *delim);
+void execute_mode(char **args, char *read);
 
 #endif

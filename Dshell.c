@@ -6,10 +6,13 @@
  *
  * Return: 0 always on success
  */
-int main(void)
+int main(int argc, char **argv)
 {
 	char *read = NULL;
 	char **args;
+	int status;
+
+	(void)argc;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
@@ -20,8 +23,12 @@ int main(void)
 		while ((read = _getline_cmd()) != NULL)
 		{
 			args = tokenize(read);
-			process_cmd(args);
-			free(args);
+			status = process_mode(args);
+			if (status == 0)
+			{
+				execute_mode(args, argv[0]);
+				free(args);
+			}
 		}
 		free(read);
 	}
