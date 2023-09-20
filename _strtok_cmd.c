@@ -20,7 +20,7 @@ bool check_delim(const char *delim, char c)
 }
 
 /**
- * _strtok_cmd - split a string into tokens
+ * strtok_cmd - split a string into tokens
  * @str: string
  * @delim: delimiter
  * Return: NULL or pointer to the following token
@@ -28,7 +28,7 @@ bool check_delim(const char *delim, char c)
 
 char *strtok_cmd(char *str, const char *delim)
 {
-	static char *token = NULL;
+	static char *token;
 	char *tokenS = NULL;
 
 	if (str != NULL)
@@ -43,7 +43,7 @@ char *strtok_cmd(char *str, const char *delim)
 
 	while (*token != '\0' && check_delim(delim, *token))
 	{
-			token++;
+		token++;
 	}
 
 	if (*token == '\0')
@@ -56,7 +56,7 @@ char *strtok_cmd(char *str, const char *delim)
 
 	while (*token != '\0' && !check_delim(delim, *token))
 	{
-			token++;
+		token++;
 	}
 
 	if (*token != '\0')

@@ -73,21 +73,21 @@ int cd_cmd(char **args)
 	char *prevDir;
 	const char *path;
 	char currentDir[PATH_MAX_LENGTH];
-	int return_val;
+	int rVal;
 
 	if (args[1] == NULL)
 	{
-		return_val = chdir(getenv("HOME"));
+		rVal = chdir(getenv("HOME"));
 	}
 	else if (args[1] != NULL)
 	{
 		path = args[1];
-		return_val = chdir(path);
+		rVal = chdir(path);
 
 		if (strcmp_cmd(args[1], "-") == 0)
 		{
 			prevDir = getenv("OLDPWD");
-			return_val = chdir(prevDir);
+			rVal = chdir(prevDir);
 		}
 	}
 	else
@@ -96,13 +96,13 @@ int cd_cmd(char **args)
 		return (1);
 	}
 
-	if (return_val != -1)
+	if (rVal != -1)
 	{
 		getcwd(currentDir, sizeof(currentDir));
 		setenv("OLDPWD", getenv("PWD"), 1);
 		setenv("PWD", currentDir, 1);
 	}
-	else if (return_val == -1)
+	else if (rVal == -1)
 	{
 		perror("hsh");
 		return (1);
