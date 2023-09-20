@@ -1,9 +1,8 @@
 #include "Dshell.h"
 
 /**
- * tokenize_line - split line of arguments
- * @input: arguments to be split
- * @read_line: length of the arguments
+ * tokenize - split line of arguments
+ * @read: length of the arguments
  *
  * Return: split arguments in tokens
  */
@@ -27,7 +26,7 @@ char **tokenize(char *read)
 		while (token != NULL)
 		{
 			tokens[i] = strdup(token);
-			token = strtok_cmd(NULL, delim)
+			token = strtok_cmd(NULL, delim);
 			i++;
 		}
 		tokens[i] = NULL;

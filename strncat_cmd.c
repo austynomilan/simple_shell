@@ -15,6 +15,7 @@ char *strncat_cmd(char *flat, char *source, int number)
 	for (x = 0; source[x] != source[number]; x++, length++)
 	{
 		flat[length] = source[x];
+	}
 
-		return (flat);
+	return (flat);
 }

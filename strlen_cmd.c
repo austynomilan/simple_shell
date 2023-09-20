@@ -13,5 +13,5 @@ int strlen_cmd(char *string)
 	while (string[start] != '\0')
 		start++;
 
-		return (start);
+	return (start);
 }

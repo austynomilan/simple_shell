@@ -14,8 +14,9 @@ char *strcpy_cmd(char *flat, char *source)
 
 	while (source[len] != '\0')
 		len++;
-		for (x = 0; x <= len; x++)
-			flat[x] = source[x]
 
-			return (flat);
-			}
+	for (x = 0; x <= len; x++)
+		flat[x] = source[x];
+
+	return (flat);
+}
