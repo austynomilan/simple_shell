@@ -14,10 +14,10 @@ char *strdup_cmd(char *s)
 	if (fresh_s == NULL)
 	{
 		perror("malloc error");
-		return(NULL)
+		return (NULL);
 	}
 
 		strcpy_cmd(fresh_s, s);
 
-		return(fresh_s);
+		return (fresh_s);
 }
