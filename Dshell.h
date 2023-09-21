@@ -44,12 +44,7 @@ char *strcpy_cmd(char *flat, char *source);
 void process_file(char *file);
 void interact_mode(void);
 char **tokenize_line(char *input, ssize_t read_line);
-char **tokenize(char *read);
-ssize_t getline_cmd(char **thread, size_t *v, FILE *stream);
-char *_getline_cmd();
 int atoi_cmd(char *str);
-bool check_delim(const char *delim, char c);
-char *strtok_cmd(char *str, const char *delim);
 void execute_mode(char **args, char *read);
 
 #endif

@@ -9,21 +9,25 @@
 void interact_mode(void)
 {
 	char *read = NULL;
+	size_t len = 0;
+	ssize_t nread;
 	int process = 1;
 	char **args;
 
 	while (process == 1)
 	{
-		write(1, "(Dshell) $: ", 12);
-		read = _getline_cmd();
+		printf("(Dshell) $: ");
+		nread = getline(&read, &len, stdin);
+		
+		if (nread == -1)
+		{
+			perror("getline");
+			break;
+		}
 
-		if (read == NULL)
-			continue;
-
-		args = tokenize(read);
+		args = tokenize_line(read, nread);
 		process_cmd(args);
-
-		free(read);
 		free(args);
 	}
+	free(read);
 }

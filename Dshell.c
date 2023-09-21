@@ -13,6 +13,8 @@ int main(int argc, char **argv)
 	char *read = NULL;
 	char **args;
 	int status;
+	size_t len = 0;
+	ssize_t nread;
 
 	(void)argc;
 
@@ -22,18 +24,15 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		char *line = NULL;
-		size_t len = 0;
-
-		while ((getline(&line, &len, stdin)) != -1)
+		while ((nread = getline(&read, &len, stdin)) != -1)
 		{
-			args = tokenize(line);
+			args = tokenize_line(read, nread);
 			status = process_mode(args);
 			if (status == 0)
 			{
 				execute_mode(args, argv[0]);
-				free(args);
 			}
+			free(args);
 		}
 		free(read);
 	}

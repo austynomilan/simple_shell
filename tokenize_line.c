@@ -7,10 +7,10 @@
  * Return: split arguments in tokens
  */
 
-char **tokenize(char *read)
+char **tokenize_line(char *read, ssize_t nread)
 {
 	char *token, *read_copy;
-	char **tokens = malloc(sizeof(char *) * MAX_LEN);
+	char **tokens = malloc(sizeof(char *) * nread);
 	char *delim = "\t\r\n\a ";
 	int i = 0;
 
