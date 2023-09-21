@@ -23,13 +23,13 @@ int execute_cmd(char **args)
 				if (execve(full_path, args, environ) != -1)
 				{
 					fprintf(stderr, "%s: command not found\n", args[0]);
-					exit(EXIT_FAILURE);
+					_exit(EXIT_FAILURE);
 				}
 			}
 			else
 			{
 				fprintf(stderr, "%s: command not found\n", args[0]);
-				exit(EXIT_FAILURE);
+				_exit(EXIT_FAILURE);
 			}
 		}
 		else

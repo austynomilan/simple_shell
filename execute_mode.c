@@ -30,6 +30,7 @@ void execute_mode(char **args, char *read)
 					fprintf(stderr, "%s: 1: %s: not found\n", read, args[0]);
 					exit(EXIT_FAILURE);
 				}
+				free(full_path);
 			}
 		}
 		execve(args[0], args, environ);

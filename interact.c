@@ -12,7 +12,6 @@ void interact_mode(void)
 	int process = 1;
 	char **args;
 
-
 	while (process == 1)
 	{
 		write(1, "(Dshell) $: ", 12);
@@ -23,7 +22,7 @@ void interact_mode(void)
 
 		args = tokenize(read);
 		process_cmd(args);
-		
+
 		free(read);
 		free(args);
 	}

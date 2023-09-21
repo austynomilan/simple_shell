@@ -30,12 +30,11 @@ char *_getline_cmd()
 			return (NULL);
 		}
 		if (line == '\n')
-		{
 			break;
-		}
-		if (i + 1 >= BUFF_SIZE)
+
+		if (i >= BUFF_SIZE)
 		{
-			buffer = realloc(buffer, i + 1);
+			buffer = realloc(buffer, (BUFF_SIZE + 2));
 			if (buffer == NULL)
 			{
 				perror("realloc");
