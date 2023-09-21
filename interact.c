@@ -23,8 +23,8 @@ void interact_mode(void)
 
 		args = tokenize(read);
 		process_cmd(args);
+		
+		free(read);
+		free(args);
 	}
-
-	free(read);
-	free(args);
 }

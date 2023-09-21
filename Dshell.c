@@ -22,9 +22,12 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		while ((read = _getline_cmd()) != NULL)
+		char *line = NULL;
+		size_t len = 0;
+
+		while ((getline(&line, &len, stdin)) != -1)
 		{
-			args = tokenize(read);
+			args = tokenize(line);
 			status = process_mode(args);
 			if (status == 0)
 			{
