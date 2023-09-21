@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <signal.h>
 
 #define MAX_LINE 256
 #define PATH_MAX_LENGTH 1024
@@ -46,5 +47,6 @@ void interact_mode(void);
 char **tokenize_line(char *input, ssize_t read_line);
 int atoi_cmd(char *str);
 void execute_mode(char **args, char *read);
+void signal_handle(int sig);
 
 #endif

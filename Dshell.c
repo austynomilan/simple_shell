@@ -1,6 +1,5 @@
 #include "Dshell.h"
 
-#define BUFFER 1024
 /**
  * main - entry point
  * @argc: argument count
@@ -24,16 +23,17 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		while ((nread = getline(&read, &len, stdin)) != -1)
+		nread = getline(&read, &len, stdin);
+		if (nread == -1)
+			perror("getline");
+
+		args = tokenize_line(read, nread);
+		status = process_mode(args);
+		if (status == 0)
 		{
-			args = tokenize_line(read, nread);
-			status = process_mode(args);
-			if (status == 0)
-			{
-				execute_mode(args, argv[0]);
-			}
-			free(args);
+			execute_mode(args, argv[0]);
 		}
+		free(args);
 		free(read);
 	}
 	return (0);
