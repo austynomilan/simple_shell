@@ -3,6 +3,8 @@
 #define BUFFER 1024
 /**
  * main - entry point
+ * @argc: argument count
+ * @argv: arguments passed
  *
  * Return: 0 always on success
  */
