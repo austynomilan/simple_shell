@@ -10,7 +10,7 @@
 
 char **tokenize_line(char *read, ssize_t nread)
 {
-	char *token, *read_copy;
+	char *token;
 	char **tokens = malloc(sizeof(char *) * (nread / 2 + 1));
 	char *delim = "\n\t\r\a ";
 	int i = 0;

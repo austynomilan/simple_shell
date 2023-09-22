@@ -54,7 +54,6 @@ int exit_cmd(char **args)
 int env_cmd(char **args)
 {
 	int i;
-	char *hi = "hello";
 
 	(void)**args;
 
