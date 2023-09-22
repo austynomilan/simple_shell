@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	ssize_t nread;
 
 	(void)argc;
-	
+
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		interact_mode();
@@ -26,11 +26,12 @@ int main(int argc, char **argv)
 		while ((nread = getline(&read, &len, stdin)) != -1)
 		{
 			args = tokenize_line(read, nread);
-		 	status = process_mode(args);
-		 	if (status == 0)
-		 	{
-				 execute_mode(args, argv[0]);
-		 	}
+			status = process_mode(args);
+
+			if (status == 0)
+			{
+				execute_mode(args, argv[0]);
+			}
 			free(args);
 		}
 
