@@ -14,17 +14,17 @@ char *strcat_cmd(char *dest, const char *src)
 	while (*dest != '\0')
 	{
 		dest++;
-		}
+	}
 
-		while (*src != '\0')
-		{
-			*dest = *src;
-			dest++;
-			src++;
-			}
+	while (*src != '\0')
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
 
-			*dest = '\0';
+	*dest = '\0';
 
-			return (original_dest);
-			}
+	return (original_dest);
+}
 

@@ -32,8 +32,8 @@ void interact_mode(void)
 
 		if (nread == -1)
 		{
-			perror("getline");
-			break;
+			write(1, "Exiting...\n", 12);
+			exit(0);
 		}
 		args = tokenize_line(read, nread);
 		process_cmd(args);

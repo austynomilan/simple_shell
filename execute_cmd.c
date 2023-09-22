@@ -23,29 +23,28 @@ int execute_cmd(char **args)
 				if (execve(full_path, args, environ) != -1)
 				{
 					fprintf(stderr, "%s: command not found\n", args[0]);
-					_exit(EXIT_FAILURE);
+					exit(127);
 				}
 			}
 			else
 			{
 				fprintf(stderr, "%s: command not found\n", args[0]);
-				_exit(EXIT_FAILURE);
+				exit(127);
 			}
 		}
 		else
 		{
 			if (execve(args[0], args, environ) == -1)
+			{
 				fprintf(stderr, "%s: command not found\n", args[0]);
+				exit(127);
+			}
 		}
 	}
 	else if (pid < 0)
-	{
 		perror("fork");
-	}
 	else
-	{
 		waitpid(pid, &status, 0);
-	}
-	return (1);
+	return (127);
 }
 

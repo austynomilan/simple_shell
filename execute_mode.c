@@ -13,6 +13,9 @@ void execute_mode(char **args, char *read)
 	int status;
 	char *full_path;
 
+	if (args == NULL || args[0] == NULL)
+		exit(0);
+
 	if (pid == -1)
 	{
 		perror("fork");

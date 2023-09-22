@@ -16,25 +16,27 @@ int main(int argc, char **argv)
 	ssize_t nread;
 
 	(void)argc;
-
+	
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		interact_mode();
 	}
 	else
 	{
-		nread = getline(&read, &len, stdin);
-		if (nread == -1)
-			perror("getline");
-
-		args = tokenize_line(read, nread);
-		status = process_mode(args);
-		if (status == 0)
+		while ((nread = getline(&read, &len, stdin)) != -1)
 		{
-			execute_mode(args, argv[0]);
+			args = tokenize_line(read, nread);
+		 	status = process_mode(args);
+		 	if (status == 0)
+		 	{
+				 execute_mode(args, argv[0]);
+		 	}
+			free(args);
 		}
-		free(args);
+
 		free(read);
 	}
+
 	return (0);
 }
+

@@ -15,6 +15,9 @@ int (*get_cmd_func(char *s))(char **)
 	};
 	int i = 0;
 
+	if (s == NULL || strlen_cmd(s) == 0)
+		return (NULL);
+
 	while (built[i].cmd != NULL && strcmp_cmd(built[i].cmd, s) != 0)
 		i++;
 

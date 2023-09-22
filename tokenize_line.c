@@ -12,7 +12,7 @@ char **tokenize_line(char *read, ssize_t nread)
 {
 	char *token;
 	char **tokens = malloc(sizeof(char *) * nread);
-	char *delim = "\t\r\n\a ";
+	char *delim = " \t\r\n\a";
 	int i = 0;
 
 	if (tokens == NULL)
@@ -21,7 +21,6 @@ char **tokenize_line(char *read, ssize_t nread)
 		perror("malloc");
 		exit(1);
 	}
-
 
 	token = strtok(read, delim);
 
