@@ -10,14 +10,13 @@
 
 char **tokenize_line(char *read, ssize_t nread)
 {
-	char *token;
-	char **tokens = malloc(sizeof(char *) * nread);
-	char *delim = " \t\r\n\a";
+	char *token, *read_copy;
+	char **tokens = malloc(sizeof(char *) * (nread / 2 + 1));
+	char *delim = "\n\t\r\a ";
 	int i = 0;
 
 	if (tokens == NULL)
 	{
-		free(tokens);
 		perror("malloc");
 		exit(1);
 	}

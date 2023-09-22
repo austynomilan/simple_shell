@@ -30,7 +30,7 @@ typedef struct cmd
 extern char **environ;
 int (*get_cmd_func(char *s))(char **);
 int process_cmd(char **args);
-int process_mode(char **args);
+int process_mode(char **args, char *read);
 int execute_cmd(char **args);
 char *handle_path(char *cmd);
 int exit_cmd(char **args);
@@ -46,7 +46,9 @@ void process_file(char *file);
 void interact_mode(void);
 char **tokenize_line(char *input, ssize_t read_line);
 int atoi_cmd(char *str);
-void execute_mode(char **args, char *read);
+int execute_mode(char **args, char *read);
 void signal_handle(int sig);
+void handle_multiString(char **args, char *argv);
+
 
 #endif

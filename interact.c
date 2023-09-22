@@ -37,7 +37,8 @@ void interact_mode(void)
 		}
 		args = tokenize_line(read, nread);
 		process_cmd(args);
+
+		free(args);
 	}
 	free(read);
-	free(args);
 }

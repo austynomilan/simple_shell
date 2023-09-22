@@ -54,6 +54,7 @@ int exit_cmd(char **args)
 int env_cmd(char **args)
 {
 	int i;
+	char *hi = "hello";
 
 	(void)**args;
 
@@ -61,7 +62,7 @@ int env_cmd(char **args)
 	{
 		printf("%s\n", environ[i]);
 	}
-	return (0);
+	return (1);
 }
 
 

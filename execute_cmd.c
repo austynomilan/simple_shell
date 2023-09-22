@@ -37,7 +37,7 @@ int execute_cmd(char **args)
 			if (execve(args[0], args, environ) == -1)
 			{
 				fprintf(stderr, "%s: command not found\n", args[0]);
-				exit(127);
+				return (0);
 			}
 		}
 	}

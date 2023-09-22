@@ -7,7 +7,7 @@
  * Return: void
  */
 
-void execute_mode(char **args, char *read)
+int execute_mode(char **args, char *read)
 {
 	pid_t pid = fork();
 	int status;
@@ -15,7 +15,6 @@ void execute_mode(char **args, char *read)
 
 	if (args == NULL || args[0] == NULL)
 		exit(0);
-
 	if (pid == -1)
 	{
 		perror("fork");
@@ -31,22 +30,23 @@ void execute_mode(char **args, char *read)
 				if (execve(full_path, args, environ) == -1)
 				{
 					fprintf(stderr, "%s: 1: %s: not found\n", read, args[0]);
-					exit(EXIT_FAILURE);
+					exit(127);
 				}
 				free(full_path);
 			}
 		}
-		execve(args[0], args, environ);
-		fprintf(stderr, "%s: 1: %s: not found\n", read, args[0]);
-		exit(EXIT_FAILURE);
+		if ((execve(args[0], args, environ)) == -1)
+		{
+			fprintf(stderr, "%s: 1: %s: not found\n", read, args[0]);
+			exit(127);
+		}
+		return (2);
 	}
 	else
 	{
 		waitpid(pid, &status, 0);
-
 		if (WIFEXITED(status) && WEXITSTATUS(status) == 127)
-		{
-			fprintf(stderr, "Command not found: %s\n", read);
-		}
+			exit(127);
 	}
+	return (127);
 }

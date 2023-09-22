@@ -30,16 +30,19 @@ int process_cmd(char **args)
  * process_mode - processes the built-in and the executable commands
  * in non-interactive mode
  * @args: arguments passed
+ * @read: read from stdin
  *
  * Return: 0 if argument is empty and result on success
  */
-int process_mode(char **args)
+int process_mode(char **args, char *read)
 {
 	int (*f)(char **);
 
+	if (args[0] == NULL)
+		exit(0);
 	f = get_cmd_func(args[0]);
-	if (f != NULL)
-		return (f(args));
+	if (f == NULL)
+		return (execute_mode(args, read));
 
-	return (0);
+	return (f(args));
 }
